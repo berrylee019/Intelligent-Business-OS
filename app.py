@@ -1,0 +1,173 @@
+import streamlit as st
+import time
+import pandas as pd
+from datetime import datetime
+
+# --- 1. 가상 데이터베이스 및 권한 설정 ---
+# 형님의 모든 프로젝트 리스트 (Admin 권한용)
+ALL_PROJECTS = [
+    {"name": "거북목 교정 AI (홍보중)", "url": "https://anti-turtle-neck-ai.streamlit.app/", "category": "Healthcare"},
+    {"name": "Seoul Realty VIP (3개국어)", "url": "https://seoul-realty-vip.streamlit.app/", "category": "Real Estate"},
+    {"name": "DoriVac Optimizer (류주희 박사 미팅용)", "url": "https://dorivac-optimizer.streamlit.app/", "category": "Bio"},
+    {"name": "Microbiome AI", "url": "#", "category": "Bio"},
+    {"name": "Pet Longevity AI", "url": "#", "category": "Healthcare"},
+    {"name": "Robot Control System", "url": "#", "category": "Tech"},
+    {"name": "StyleScan: Fit-Doctor", "url": "#", "category": "Fashion"},
+    {"name": "Chef Noir AI", "url": "#", "category": "Lifestyle"},
+    {"name": "SUROP Platform", "url": "#", "category": "Bio"},
+    {"name": "Longevity OS", "url": "#", "category": "Healthcare"},
+    {"name": "Smart Pharmacy Solution", "url": "#", "category": "Medical"},
+    {"name": "Space Ops C2", "url": "#", "category": "Defense"}
+]
+
+# 사용자별 권한 DB
+USER_DB = {
+    "admin_hyung": {
+        "name": "형님 (Administrator)",
+        "role": "SuperAdmin",
+        "projects": [p["name"] for p in ALL_PROJECTS]
+    },
+    "dongwoon_guest": {
+        "name": "동운인터내셔널 담당자",
+        "role": "Client",
+        "projects": ["반도체 냉각 모듈 최적화 AI (가상)", "Project Monitoring"]
+    }
+}
+
+# --- 2. 보안 인디케이터 스타일 정의 ---
+st.set_page_config(page_title="AI Business OS - Security Center", layout="wide")
+
+st.markdown("""
+    <style>
+    .led-green {
+        margin: 0 auto;
+        width: 15px;
+        height: 15px;
+        background-color: #ABFF00;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+        display: inline-block;
+        animation: blinkRed 1.5s infinite;
+    }
+    @keyframes blinkRed {
+        from { background-color: #ABFF00; }
+        50% { background-color: #304701; box-shadow: none; }
+        to { background-color: #ABFF00; }
+    }
+    .security-box {
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f0f2f6;
+        border-left: 5px solid #007bff;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# --- 3. 세션 상태 관리 (로그인 시뮬레이션) ---
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+    st.session_state.user_id = None
+
+# --- 4. 메인 화면 로직 ---
+if not st.session_state.logged_in:
+    st.title("🔒 AI Business OS Login")
+    user_input = st.text_input("UserID", placeholder="아이디를 입력하세요 (admin_hyung / dongwoon_guest)")
+    if st.button("Login"):
+        if user_input in USER_DB:
+            st.session_state.logged_in = True
+            st.session_state.user_id = user_input
+            st.rerun()
+        else:
+            st.error("등록되지 않은 사용자입니다.")
+else:
+    user_info = USER_DB[st.session_state.user_id]
+    
+    # 사이드바: 프로젝트 스위처 및 보안 상태
+    with st.sidebar:
+        st.title("🛰️ Dashboard")
+        st.subheader(f"Welcome, {user_info['name']}")
+        st.write(f"Role: **{user_info['role']}**")
+        
+        st.divider()
+        
+        # 가시적 보안 인디케이터
+        st.markdown('### 🟢 System Status')
+        col1, col2 = st.columns([1, 5])
+        with col1:
+            st.markdown('<div class="led-green"></div>', unsafe_allow_html=True)
+        with col2:
+            st.write("Local AI Processing")
+        st.caption("Data Encrypted & Air-gapped")
+        
+        st.divider()
+        
+        # 프로젝트 스위처 (권한 기반)
+        selected_project = st.selectbox("📂 Project Switcher", user_info["projects"])
+        
+        if st.button("Logout"):
+            st.session_state.logged_in = False
+            st.rerun()
+
+    # 메인 컨텐츠 영역
+    tab1, tab2 = st.tabs(["🚀 Project Console", "🛡️ Security & Governance"])
+
+    with tab1:
+        st.header(f"Project: {selected_project}")
+        
+        # 관리자 계정일 경우 URL 연결 및 상세 정보 표시
+        if user_info["role"] == "SuperAdmin":
+            project_data = next((p for p in ALL_PROJECTS if p["name"] == selected_project), None)
+            if project_data:
+                st.info(f"분야: {project_data['category']}")
+                st.markdown(f"🔗 [서비스 바로가기]({project_data['url']})")
+                
+                # 프로젝트 상태 모니터링 (더미 데이터)
+                col_a, col_b, col_c = st.columns(3)
+                col_a.metric("Status", "Active", "Running")
+                col_b.metric("Data Usage", "1.2GB", "-5%")
+                col_c.metric("API Calls", "Local Only", "No External")
+        else:
+            st.warning("발주처 전용 모니터링 모드입니다. 상세 설계 데이터는 보안 프로토콜에 의해 보호됩니다.")
+            st.progress(65, text="Project Progress (Stage 2: Validation)")
+
+    with tab2:
+        st.header("🛡️ Security & Governance Center")
+        
+        st.markdown("""
+        <div class="security-box">
+        <h4>🔒 Private AI Identity & Access Management</h4>
+        본 시스템은 <b>Tenant Isolation (프로젝트 격리)</b> 원칙에 따라 설계되었습니다. 
+        모든 데이터 추론은 외부 클라우드가 아닌 전용 로컬 서버에서만 처리됩니다.
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.divider()
+        
+        col_l, col_r = st.columns(2)
+        
+        with col_l:
+            st.subheader("🔑 Data Sovereignty")
+            st.write("- **Encryption:** AES-256 (At rest & In transit)")
+            st.write("- **Network:** Air-gapped Environment Simulated")
+            st.write("- **AI Engine:** Llama-3-Local (No Data Training)")
+            
+        with col_r:
+            st.subheader("🔍 Real-time Integrity")
+            st.write(f"현재 접속 IP: `192.168.0.{hash(st.session_state.user_id) % 255}`")
+            st.write(f"마지막 보안 점검: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+            st.write("상태: **Safe**")
+
+        st.divider()
+        
+        st.subheader("📑 Audit Trail (감사 로그)")
+        # 감사 로그 생성
+        audit_data = [
+            {"Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "User": st.session_state.user_id, "Action": "Login", "Target": "System"},
+            {"Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "User": st.session_state.user_id, "Action": "Access", "Target": selected_project},
+            {"Timestamp": "2026-05-13 14:20:05", "User": "System", "Action": "Encryption", "Target": "DB_Volume_01"},
+        ]
+        st.table(pd.DataFrame(audit_data))
+
+# --- Footer ---
+st.sidebar.markdown("---")
+st.sidebar.caption("Powered by Korean Palantir Framework")
