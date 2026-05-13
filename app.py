@@ -3,7 +3,6 @@ import time
 import pandas as pd
 from datetime import datetime
 
-st.secrets["auth"]["ADMIN_PASSWORD"]
 
 # --- 1. 가상 데이터베이스 및 권한 설정 ---
 # 형님의 모든 프로젝트 리스트 (Admin 권한용)
