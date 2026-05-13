@@ -109,7 +109,7 @@ else:
             st.rerun()
 
     # 메인 컨텐츠 영역
-    tab1, tab2 = st.tabs(["🚀 Project Console", "🛡️ Security & Governance"])
+    tab1, tab2, tab3 = st.tabs(["🚀 Project Console", "🛡️ Security & Governance"])
 
     with tab1:
         st.header(f"Project: {selected_project}")
@@ -140,6 +140,53 @@ else:
         모든 데이터 추론은 외부 클라우드가 아닌 전용 로컬 서버에서만 처리됩니다.
         </div>
         """, unsafe_allow_html=True)
+
+    with tab3:
+        if user_info["role"] != "SuperAdmin":
+            st.warning("⚠️ 이 영역은 SuperAdmin 전용입니다. 접근이 제한됩니다.")
+        else:
+            st.header("⚙️ Advanced System Configuration")
+            
+            col_cfg1, col_cfg2 = st.columns(2)
+            
+            with col_cfg1:
+                st.subheader("🤖 AI Engine Tuning")
+                model_type = st.selectbox("Inference Model", ["Llama-3-70B (Local)", "Llama-3-8B (Fast)", "Mistral-v0.2"])
+                temp = st.slider("Temperature (Creativity)", 0.0, 1.0, 0.2)
+                st.caption("낮을수록 정교하고 논리적인 기술 영업 답변을 생성합니다.")
+                
+                st.divider()
+                
+                st.subheader("🌐 Network & Security")
+                st.toggle("Strict Air-gap Mode", value=True)
+                st.toggle("IP Whitelisting (Active)", value=True)
+                st.text_input("Allowed Admin IP Range", "211.xxx.xxx.0/24")
+
+            with col_cfg2:
+                st.subheader("📊 System Resource Monitor")
+                # 실시간 리소스 감시 시뮬레이션
+                import numpy as np
+                chart_data = pd.DataFrame(np.random.randn(20, 2), columns=['CPU', 'RAM'])
+                st.line_chart(chart_data)
+                st.caption("Local Server Resource Usage (Simulated)")
+                
+                st.divider()
+                
+                st.subheader("🧹 Data Governance")
+                st.date_input("Audit Log Retention Until", datetime.now())
+                if st.button("Purge Temporary Cache", type="primary"):
+                    with st.spinner("Cleaning..."):
+                        time.sleep(1)
+                        st.success("Cache cleared safely.")
+
+            st.divider()
+            
+            # Webhook 및 외부 연동 설정 (B2B 확장성)
+            st.subheader("🔌 API & Integrations")
+            st.text_input("Webhook URL (For ERP/CRM Linkage)", "https://api.dongwoon.com/v1/sync")
+            st.write("Current Status: **Standby**")
+
+
         
         st.divider()
         
