@@ -23,12 +23,12 @@ ALL_PROJECTS = [
 
 # 사용자별 권한 DB
 USER_DB = {
-    "admin_hyung": {
+    "bslee": {
         "name": "형님 (Administrator)",
         "role": "SuperAdmin",
         "projects": [p["name"] for p in ALL_PROJECTS]
     },
-    "dongwoon_guest": {
+    "200400": {
         "name": "동운인터내셔널 담당자",
         "role": "Client",
         "projects": ["반도체 냉각 모듈 최적화 AI (가상)", "Project Monitoring"]
