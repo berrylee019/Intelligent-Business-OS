@@ -72,7 +72,7 @@ if "logged_in" not in st.session_state:
 # --- 4. 메인 화면 로직 ---
 if not st.session_state.logged_in:
     st.title("🔒 AI Business OS Login")
-    user_input = st.text_input("UserID", placeholder="아이디를 입력하세요(admin_hyung/dongwoon_guest")
+    user_input = st.text_input("UserID", placeholder="아이디를 입력하세요")
     if st.button("Login"):
         if user_input in USER_DB:
             st.session_state.logged_in = True
@@ -110,7 +110,7 @@ else:
             st.rerun()
 
     # 메인 컨텐츠 영역
-    tab1, tab2, tab3 = st.tabs(["🚀 Project Console", "🛡️ Security & Governance"])
+    tab1, tab2, tab3 = st.tabs(["🚀 Project Console", "🛡️ Security & Governance", "⚙️ Advanced Settings"])
 
     with tab1:
         st.header(f"Project: {selected_project}")
