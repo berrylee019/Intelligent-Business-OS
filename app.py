@@ -31,7 +31,7 @@ ALL_PROJECTS = [
     {"name": "her2-analysis (Her2-low 환자군 분석)", "url": "https://oncolytic-virus.streamlit.app/", "category": "Medical/미화"},
     {"name": "travel-ai (여행ai 고모부아는곳?)", "url": "https://oncolytic-virus.streamlit.app/", "category": "Travel"},
     {"name": "bi (영수증분석)", "url": "https://bi-strategist.streamlit.app/", "category": "경영회계"},
-    {"name": "bi (에러 해결)", "url": "https://error-doctor.streamlit.app/", "category": "개발자"}
+    {"name": "Error Doctor (에러 해결)", "url": "https://error-doctor.streamlit.app/", "category": "개발자"}
 ]
 
 # 사용자별 권한 DB
