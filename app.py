@@ -72,7 +72,7 @@ if "logged_in" not in st.session_state:
 # --- 4. 메인 화면 로직 ---
 if not st.session_state.logged_in:
     st.title("🔒 AI Business OS Login")
-    user_input = st.text_input("UserID", placeholder="아이디를 입력하세요 (admin_hyung / dongwoon_guest)")
+    user_input = st.text_input("UserID", placeholder="아이디를 입력하세요 (bslee / 200400)")
     if st.button("Login"):
         if user_input in USER_DB:
             st.session_state.logged_in = True
