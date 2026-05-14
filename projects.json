@@ -1,0 +1,158 @@
+[
+    {
+        "name": "거북목 교정 AI (홍보중)",
+        "url": "https://anti-turtle-neck-ai.streamlit.app/",
+        "category": "Healthcare",
+        "status": "사용자 지표 모니터링 중"
+    },
+    {
+        "name": "Biz-Cube AI (서울빅데이터경진대회)",
+        "url": "https://seoul-realty.streamlit.app/",
+        "category": "Real Estate",
+        "status": "제출 완료 및 심사 대기"
+    },
+    {
+        "name": "Seoul Realty VIP (한중일 번역서비스)",
+        "url": "https://seoul-realty-vip.streamlit.app/",
+        "category": "Real Estate",
+        "status": "다국어 DB 최적화 중"
+    },
+    {
+        "name": "DoriVac Optimizer (류주희 박사 미팅용)",
+        "url": "https://dorivac-optimizer.streamlit.app/",
+        "category": "Bio",
+        "status": "류주희 박사 미팅 후 피드백 반영 중"
+    },
+    {
+        "name": "SUROP Platform (DoriVac 미팅용)",
+        "url": "https://misatech-surop.streamlit.app/",
+        "category": "Bio",
+        "status": "안티젠 설계 모듈 고도화"
+    },
+    {
+        "name": "Microbiome AI (장항외과 소개)",
+        "url": "https://microbiome-ai-lab.streamlit.app/",
+        "category": "Bio",
+        "status": "병의원용 대시보드 기획 중"
+    },
+    {
+        "name": "Pet Longevity AI (친구들께 소개)",
+        "url": "https://pet-longevity-ai.streamlit.app/",
+        "category": "Healthcare",
+        "status": "베타 테스트 진행 중"
+    },
+    {
+        "name": "Pet Longevity AI (영문판,PH홍보중)",
+        "url": "https://pet-longevity.streamlit.app/",
+        "category": "Healthcare",
+        "status": "Product Hunt 유입 분석 중"
+    },
+    {
+        "name": "Robot Control System (로봇관제)",
+        "url": "https://robot-control.streamlit.app/",
+        "category": "Tech",
+        "status": "제어 알고리즘 테스트"
+    },
+    {
+        "name": "StyleScan: (의류업체 접촉중) ",
+        "url": "https://style-scan-vip1.streamlit.app/",
+        "category": "Fashion",
+        "status": "B2B 제안서 발송 완료"
+    },
+    {
+        "name": "StyleScan: (영문판,PH홍보중) ",
+        "url": "https://stylescan-ai.streamlit.app/",
+        "category": "Fashion",
+        "status": "글로벌 유저 피드백 수집"
+    },
+    {
+        "name": "StyleScan: (내사진,입어볼옷) ",
+        "url": "https://style-scan-vip2.streamlit.app/",
+        "category": "Fashion",
+        "status": "가상 피팅 엔진 업데이트"
+    },
+    {
+        "name": "StyleScan: Fit-Doctor",
+        "url": "https://fit-doctor-pro-v3.streamlit.app/",
+        "category": "Fashion/Healthcare",
+        "status": "체형 분석 로직 고도화"
+    },
+    {
+        "name": "Chef Noir AI (흑백요리사)",
+        "url": "https://bw-chef.streamlit.app/",
+        "category": "Lifestyle/Recipe",
+        "status": "레시피 DB 확충 중"
+    },
+    {
+        "name": "Chef Noir AI (영문판,PH홍보중)",
+        "url": "https://chef-noir.streamlit.app/",
+        "category": "Lifestyle/Recipe",
+        "status": "홍보 영상 제작 중"
+    },
+    {
+        "name": "Longevity OS (장수/수명)",
+        "url": "https://longevity-os.streamlit.app/",
+        "category": "Healthcare",
+        "status": "생체 지표 연동 테스트"
+    },
+    {
+        "name": "Smart Pharmacy Solution (약국용)",
+        "url": "https://smart-pharmacy-solution.streamlit.app/",
+        "category": "Medical",
+        "status": "약국 현장 피드백 수렴"
+    },
+    {
+        "name": "Church Admin Solution (교회행정용)",
+        "url": "https://church.streamlit.app/",
+        "category": "Church",
+        "status": "기능 안정화 단계"
+    },
+    {
+        "name": "Space Ops C2 (우주로테크 연락요)",
+        "url": "https://space-ops.streamlit.app/",
+        "category": "Defense/Space",
+        "status": "위성 궤도 시뮬레이션 고도화"
+    },
+    {
+        "name": "gilead (제약 임상데이터 분석)",
+        "url": "https://gilead-clinical-ai.streamlit.app/",
+        "category": "Medical",
+        "status": "임상 데이터셋 전처리"
+    },
+    {
+        "name": "oncolytic-virus (항암바이러스 임상데이터 분석)",
+        "url": "https://oncolytic-virus.streamlit.app/",
+        "category": "Medical",
+        "status": "분석 모델 유효성 검증"
+    },
+    {
+        "name": "her2-analysis (Her2-low 환자군 분석)",
+        "url": "https://oncolytic-virus.streamlit.app/",
+        "category": "Medical/미화",
+        "status": "환자군 분류 알고리즘 적용"
+    },
+    {
+        "name": "travel-ai (여행ai 고모부아는곳?)",
+        "url": "https://oncolytic-virus.streamlit.app/",
+        "category": "Travel",
+        "status": "추천 로직 개발 중"
+    },
+    {
+        "name": "bi (영수증분석)",
+        "url": "https://bi-strategist.streamlit.app/",
+        "category": "경영회계",
+        "status": "OCR 인식률 개선 중"
+    },
+    {
+        "name": "Error Doctor (에러 해결)",
+        "url": "https://error-doctor.streamlit.app/",
+        "category": "개발자",
+        "status": "디버깅 시나리오 확충"
+    },
+    {
+        "name": "SolarManager AI",
+        "url": "https://solar-manager.streamlit.app/",
+        "category": "Energy/AI",
+        "status": "초기 기획 및 데이터 수집 단계"
+    }
+]
