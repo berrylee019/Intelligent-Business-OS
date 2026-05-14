@@ -105,6 +105,15 @@ else:
         st.title("🛰️ Dashboard")
         st.subheader(f"Welcome, {user_info['name']}")
         st.write(f"Role: **{user_info['role']}**")
+
+        # [추가] SuperAdmin일 경우에만 깃허브 관리 버튼 표시
+        if user_info['role'] == "SuperAdmin":
+            st.link_button(
+                "📂 Edit on GitHub", 
+                "https://github.com/[형님의_깃허브_ID]/intelligent-business-os", # <- 형님의 실제 깃허브 주소로 수정하세요!
+                use_container_width=True,
+                help="클릭하면 깃허브 저장소로 이동하여 코드를 즉시 수정할 수 있습니다."
+            )
         
         st.divider()
         
