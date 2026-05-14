@@ -77,10 +77,31 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
+# --- 사이드바: 프로젝트 스위처 및 보안 상태 ---
+with st.sidebar:
+    st.title("🛰️ Dashboard")
+    st.subheader(f"Welcome, {user_info['name']}")
+    st.write(f"Role: **{user_info['role']}**")
+    
+    # [추가] SuperAdmin일 경우에만 깃허브 관리 버튼 표시
+    if user_info['role'] == "SuperAdmin":
+        st.link_button(
+            "📂 Edit on GitHub", 
+            "https://github.com/[형님의_깃허브_ID]/intelligent-business-os", # <- 형님의 실제 깃허브 주소로 수정하세요!
+            use_container_width=True,
+            help="클릭하면 깃허브 저장소로 이동하여 코드를 즉시 수정할 수 있습니다."
+        )
+    
+    st.divider()
+    
+    # 가시적 보안 인디케이터 부분... (이하 동일)
+
 # --- 3. 세션 상태 관리 (로그인 시뮬레이션) ---
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
+    
     st.session_state.user_id = None
+    
 
 # --- 4. 메인 화면 로직 ---
 if not st.session_state.logged_in:
