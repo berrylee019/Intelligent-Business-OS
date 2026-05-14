@@ -110,7 +110,7 @@ else:
         if user_info['role'] == "SuperAdmin":
             st.link_button(
                 "📂 Edit on GitHub", 
-                "https://github.com/[형님의_깃허브_ID]/intelligent-business-os", # <- 형님의 실제 깃허브 주소로 수정하세요!
+                "https://github.com/berrylee019/intelligent-business-os", # <- 형님의 실제 깃허브 주소로 수정하세요!
                 use_container_width=True,
                 help="클릭하면 깃허브 저장소로 이동하여 코드를 즉시 수정할 수 있습니다."
             )
